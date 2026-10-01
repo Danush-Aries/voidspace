@@ -2,10 +2,8 @@
 
 > **Monaco editor + terminal + Claude AI agent + Colab T4 GPU gateway + Automerge CRDT collab + Google Drive sync + VS Code extension marketplace — all in one Node.js process. Open a URL, get a full cloud IDE with a GPU on tap.**
 
-<p align="center"><img src="assets/hero.gif" alt="VOID IDE — Claude agent + Colab GPU" width="720"></p>
-
 <p align="center">
-  <img src="https://img.shields.io/github/actions/workflow/status/Danush-Aries/voidspace/ci.yml?branch=main&style=flat-square" alt="build">
+  <img src="https://img.shields.io/github/actions/workflow/status/Danush-Aries/voidspace/ci-cd.yml?branch=main&style=flat-square" alt="build">
   <img src="https://img.shields.io/badge/license-MIT-00ff41?style=flat-square" alt="license">
   <img src="https://img.shields.io/badge/made%20with-TypeScript%205.8-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="ts">
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white" alt="react">
@@ -14,7 +12,7 @@
 
 ## Why this exists
 
-Codespaces costs money after two hours a day. Colab has a T4 but no editor. VS Code Web has an editor but no GPU. VOID is what happens when you stop paying for three tools and glue them together: a Monaco editor in the browser, a Node/Express backend that speaks to a Colab kernel over its Jupyter HTTP API for real 4–12-hour T4 sessions, a Claude agent panel that streams responses and edits files, and a CRDT collab layer so two people can edit the same file with no merge conflicts. Auth + billing tiers included so you can host it yourself.
+Codespaces costs money after two hours a day. Colab has a T4 but no editor. VS Code Web has an editor but no GPU. VOID is what happens when you stop paying for three tools and glue them together: a Monaco editor in the browser, a Node/Express backend that speaks to a Colab kernel over its Jupyter HTTP API for real 4–12-hour T4 sessions, a Claude agent panel that streams responses and edits files, and a CRDT collab layer so two people can edit the same file with no merge conflicts. JWT/Google OAuth auth is included so you can host it yourself.
 
 ## Try it in 60 seconds
 
@@ -40,12 +38,6 @@ Docker: `docker compose up --build`. Prod monitoring stack: `docker compose -f d
 - **CRDT collab (`src/collab/`)** — Automerge documents, Socket.IO rooms per file, presence indicators, invite tokens, offline change queue. Two clients editing the same character position both survive.
 - **Extension marketplace (`src/marketplace/Server.ts`)** — standalone Express server on `MARKETPLACE_PORT`; VS Code-compatible extension registry with search, ratings, install.
 - **Auth (`src/services/authService.ts`)** — bcrypt + JWT + Google OAuth 2.0, in-memory `Map` in dev, swap-out interface for Postgres in prod.
-
-## Screenshots
-
-| Monaco + Claude panel | Colab GPU session | Real-time collab | Extension marketplace |
-|---|---|---|---|
-| ![](assets/screenshot-1.png) | ![](assets/screenshot-2.png) | ![](assets/screenshot-3.png) | ![](assets/screenshot-4.png) |
 
 ## Environment
 
