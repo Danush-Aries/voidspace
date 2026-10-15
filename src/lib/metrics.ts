@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { collectDefaultMetrics, Counter, Gauge, Histogram } from 'prom-client';
+import promClient, { collectDefaultMetrics, Counter, Gauge, Histogram } from 'prom-client';
 
 // ============================================================================
-# Prometheus Metrics Collection Middleware
-# ============================================================================
+// Prometheus Metrics Collection Middleware
+// ============================================================================
 
 // Create a registry
 const register = new promClient.Registry();
@@ -77,8 +77,8 @@ const usersOnline = new Gauge({
 });
 
 // ============================================================================
-# Middleware Functions
-# ============================================================================
+// Middleware Functions
+// ============================================================================
 
 export function metricsMiddleware(req: any, res: any, next: () => void) {
   const start = Date.now();
@@ -128,8 +128,8 @@ export function updateUsersOnline(count: number) {
 }
 
 // ============================================================================
-# Metrics Endpoint
-# ============================================================================
+// Metrics Endpoint
+// ============================================================================
 
 export function setupMetricsRoutes(app: any) {
   const router = Router();
@@ -206,8 +206,8 @@ export function setupMetricsRoutes(app: any) {
 }
 
 // ============================================================================
-# Export metrics manually for registration
-# ============================================================================
+// Export metrics manually for registration
+// ============================================================================
 
 export const metrics = {
   httpRequestCount: httpRequestsTotal,

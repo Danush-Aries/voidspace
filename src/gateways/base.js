@@ -23,7 +23,7 @@ class BaseGateway {
 
   async close() {
     // Default implementation - can be overridden
-    if this.session && typeof this.session.close === 'function' {
+    if (this.session && typeof this.session.close === 'function') {
       await this.session.close();
     }
     this.session = null;

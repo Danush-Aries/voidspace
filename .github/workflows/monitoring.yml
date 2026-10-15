@@ -1,8 +1,12 @@
 name: Monitoring & Logs
 
 on:
-  schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
+  # Schedule disabled: this workflow probes https://${{ secrets.DOMAIN }}, but no
+  # repository secrets are configured and the app is not deployed, so every run
+  # failed and emailed a false alarm every 6 hours. Re-enable the cron below
+  # once DOMAIN / LOKI_HOST are set and a deployment exists.
+  # schedule:
+  #   - cron: '0 */6 * * *'
   workflow_dispatch:
   push:
     branches: [main, master]
